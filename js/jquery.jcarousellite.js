@@ -12,6 +12,8 @@
 
     $.fn.jCarouselLite = function(options) {
 
+
+
         options = $.extend({}, $.fn.jCarouselLite.options, options || {});
 
         return this.each(function() {   // Returns the element collection. Chainable.
@@ -26,6 +28,8 @@
             initStyles();                       // Set the appropriate styles for the carousel div, ul and li
             initSizes();                        // Set appropriate sizes for the carousel div, ul and li
             attachEventHandlers();              // Attach event handlers for carousel to respond
+
+
 
             function go(to) {
                 if(!running) {

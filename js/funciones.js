@@ -1,11 +1,36 @@
 $(function() {
+
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-right",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "3000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+
     $(".jcarousellite .carousel").jCarouselLite({
+
+
+
         auto: 800,
-        speed: 1000,
+        speed: 30000,
         // visible: 2,
         vertical: true,
+        // pauseOnMouseOver: true, // This is the configuration parameter
+        circular: true
 
     });
+
     // $(".jcarousellite .carousel").jCarouselLite({
     //     auto: 800,
     //     speed: 1000,
@@ -62,6 +87,11 @@ $(function() {
             $(this).parent().find(".maxres").val()
         );
 
+        // $("#myModal").find(".sobra").val($(this).parent().find(".sobrantes").val());
+        //
+        // $("#myModal").find(".sobra").html('QUEDAN '+
+        //     $(this).parent().find(".sobrantes").val() +' RESERVAS'
+        // );
 
     });
 
@@ -98,21 +128,38 @@ $(function() {
 
     $('#btnProcesar').click(function(){
 
-        if ($("#frm").validationEngine('validate')) {
-        var datos = $('#frm').serialize();
-        $.ajax({
-            url: "add.php",
-            type: "POST",
-            data: datos,
-            success: function(data){
+        // if($(".sobra").val() > 1) {
 
-                document.getElementById('frm').reset();
-                console.log(data);
 
-            }
-        });
-        $('#myModal').modal("hide");
-        }
+                if ($("#frm").validationEngine('validate')) {
+                    var datos = $('#frm').serialize();
+                    $.ajax({
+                        url: "add.php",
+                        type: "POST",
+                        data: datos,
+                        success: function (data) {
+
+                            document.getElementById('frm').reset();
+                            console.log(data);
+
+                            $('#resultado').html('<div class="alert alert-success">' + data + '</div>');
+
+                        }
+                    });
+                    toastr["success"]('La Reserva se realizo correctamente!!!');
+                    $('#myModal').modal("hide");
+                }else{
+                    toastr["error"]('Complete el Formulario Correctamente');
+                }
+
+
+
+        // } else{
+        //     toastr["error"]('Ya no quedan reservas!!!');
+        //     document.getElementById('frm').reset();
+        //     $('#myModal').modal("hide");
+        // }
+
     });
 });
 

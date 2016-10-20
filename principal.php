@@ -1,117 +1,127 @@
-<!doctype html>
-<html lang="es">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link type="text/css" rel="stylesheet" href="css/reset.css" />
-    <link type="text/css" rel="stylesheet" href="css/style.css" />
-    <link type="text/css" rel="stylesheet" href="../widget/css/rcarousel.css" />
-    <style type="text/css">
-        #container {
-            width: 500px;
-            height: 500px;
-            position: relative;
+    <title>Bootstrap Carousel</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script>
+        jQuery(document).ready(function() {
+
+            jQuery('.carousel[data-type="multi"] .item').each(function(){
+                var next = jQuery(this).next();
+                if (!next.length) {
+                    next = jQuery(this).siblings(':first');
+                }
+                next.children(':first-child').clone().appendTo(jQuery(this));
+
+                for (var i=0;i<1;i++) {
+                    next=next.next();
+                    if (!next.length) {
+                        next = jQuery(this).siblings(':first');
+                    }
+                    next.children(':first-child').clone().appendTo($(this));
+                }
+            });
+
+        });
+    </script>
+    <style>
+        .carousel-control.left, .carousel-control.right {
+            background-image:none;
         }
 
-        #carousel {
-            position: absolute;
-            top: 50px;
+        .img-responsive{
+            width:100%;
+            height:auto;
         }
 
-        #carousel img {
-            border: 0;
+        @media (min-width: 992px ) {
+            .carousel-inner .active.left {
+                left: -25%;
+            }
+            .carousel-inner .next {
+                left:  25%;
+            }
+            .carousel-inner .prev {
+                left: -25%;
+            }
         }
 
-        #ui-carousel-next, #ui-carousel-prev {
-            width: 100px;
-            height: 50px;
-            background: url(images/arrow-bottom.png) #fff center center no-repeat;
-            display: block;
-            position: absolute;
-            left: 0
-            z-index: 100;
+        @media (min-width: 768px) and (max-width: 991px ) {
+            .carousel-inner .active.left {
+                left: -33.3%;
+            }
+            .carousel-inner .next {
+                left:  33.3%;
+            }
+            .carousel-inner .prev {
+                left: -33.3%;
+            }
+            .active > div:first-child {
+                display:block;
+            }
+            .active > div:first-child + div {
+                display:block;
+            }
+            .active > div:last-child {
+                display:none;
+            }
         }
 
-        #ui-carousel-next {
-            top: 0;
-            background-image: url(images/arrow-top.png);
-        }
-
-        #ui-carousel-prev {
-            bottom: 0;
-        }
-
-        #ui-carousel-next > span, #ui-carousel-prev > span {
-            display: none;
+        @media (max-width: 767px) {
+            .carousel-inner .active.left {
+                left: -100%;
+            }
+            .carousel-inner .next {
+                left:  100%;
+            }
+            .carousel-inner .prev {
+                left: -100%;
+            }
+            .active > div {
+                display:none;
+            }
+            .active > div:first-child {
+                display:block;
+            }
         }
     </style>
+
 </head>
 <body>
+<div class="container">
+    <h1>Bootstrap Multiple image sliding demo</h1>
+    <!--The main div for carousel-->
+    <div class="container text-center">
+        <div class="carousel slide row" data-ride="carousel" data-type="multi" data-interval="2000" id="fruitscarousel">
 
-<div id="header">
-    <p>
-        This is an example of <em>rcarousel</em> – a jQuery UI continuous carousel.
-        Go back to the <a href="http://ryrych.github.com/rcarousel/">documentation</a>
-    </p>
-</div>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+                <div class="item">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+                <div class="item">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+                <div class="item">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+                <div class="item">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+                <div class="item">
+                    <div class="col-md-3 col-sm-4 col-xs-12"><a href="#"><img src="img/1.jpg" img-responsive"></a></div>
+                </div>
+            </div>
 
-<div id="content">
-    <h1>vertical carousel</h1>
 
-    <div id="container">
-        <div id="carousel">
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
-            <img src="img/1.jpg" />
         </div>
-        <a href="#" id="ui-carousel-next"><span>next</span></a>
-        <a href="#" id="ui-carousel-prev"><span>prev</span></a>
     </div>
+
+
 </div>
-
-<script type="text/javascript" src="js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" src="js/jquery.ui.core.js"></script>
-<script type="text/javascript" src="js/jquery.ui.widget.js"></script>
-<script type="text/javascript" src="js/jquery.ui.rcarousel.js"></script>
-<script type="text/javascript">
-    jQuery(function($) {
-        $("#carousel").rcarousel({
-            orientation: "vertical",
-            auto: {
-                enabled: true,
-                interval: 3000
-            }
-        });
-
-        $( "#ui-carousel-next" )
-            .add( "#ui-carousel-prev" )
-            .hover(
-                function() {
-                    $( this ).css( "opacity", 0.7 );
-                },
-                function() {
-                    $( this ).css( "opacity", 1.0 );
-                }
-            );
-    });
-</script>
-
 </body>
 </html>
-
-
-
-

@@ -23,6 +23,10 @@
 
     <script type="text/javascript" src="js/funciones.js"></script>
 
+    <style>
+
+    </style>
+
 </head>
 <body>
 
@@ -32,29 +36,34 @@ $mysqli = new mysqli('localhost','root','', 'prestashop');
 
 
 $sql = "SELECT DISTINCT tcl.id_cir as id_circuito,
-       c.nombre as nombrecir,
-       c.total as total,
-       c.max_reservas as max_reservas,
-       c.costo_adulto as adulto,
-       c.costo_ninio as ninio,
-       c.costo_infante as infante,
-       tcl.id_lug as id_lugar_turistico,
-       lt.nombre as nombre,
-       ilt.id_imagen_lugares_turisticos as id_imagen_lugares_turisticos,
-       ilt.imagen_principal as imagen_principal
+                c.nombre as nombrecir,
+                c.total as total,
+                c.max_reservas as max_reservas,
+                c.costo_adulto as adulto,
+                c.costo_ninio as ninio,
+                c.costo_infante as infante,
+                tcl.id_lug as id_lugar_turistico,
+                lt.nombre as nombre,
+                ilt.id_imagen_lugares_turisticos as id_imagen_lugares_turisticos,
+                ilt.imagen_principal as imagen_principal
 FROM ps_tmp_circuito_lugar tcl
-       INNER JOIN ps_imagen_lugares_turisticos ilt
-              ON ilt.id_lugar_turistico = tcl.id_lug
-       inner join ps_lugar_turistico lt
-              on ilt.id_lugar_turistico = lt.id_lugar_turistico
-       inner join ps_circuito c
-              on c.id_circuito = tcl.id_cir
+  INNER JOIN ps_imagen_lugares_turisticos ilt
+    ON ilt.id_lugar_turistico = tcl.id_lug
+  inner join ps_lugar_turistico lt
+    on ilt.id_lugar_turistico = lt.id_lugar_turistico
+  inner join ps_circuito c
+    on c.id_circuito = tcl.id_cir
 ORDER BY c.id_circuito ASC";
 
 $query = $mysqli->query( $sql )or die( $mysqli->error );
 $prev_cat = '';
+?>
 
-
+<div class="jcarousellite">
+    <div class="carousel">
+        <ul>
+            <li>
+<?php
 
 while( $dados = $query->fetch_object() ){
 
@@ -64,18 +73,19 @@ while( $dados = $query->fetch_object() ){
         if( $prev_cat!='' ) {
             ?>
 
-            <div class="padre col-lg-9 col-lg-offset-1 col-xs-12"  style="padding: 20px">
-                <fieldset class="col-xs-12">
+            <div class="padre col-lg-9 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
+                <fieldset class="col-lg-11 col-xs-11" style="border:3px solid #1f497d">
                     <legend><?php echo $dados->nombrecir ?></legend>
-                    <a class="btn btn-primary idcircuitoclick" data-toggle="modal" data-target="#myModal" >Reservar</a>
+                    <a class="btn idcircuitoclick" style="background-color: #e26b0a; color: white" data-toggle="modal" data-target="#myModal" >Reservar</a>
                     <input type="hidden" class="idcircuito" value="<?php echo $dados->id_circuito ?>">
                     <input type="hidden" class="maxres" value="<?php echo $dados->max_reservas ?>">
-                    <label class="btn btn-danger pull-right" style="border: 0"><strong> Costo Total S/. <?php echo $dados->total ?> </strong></label>
+                    <input type="hidden" class="sobrantes" value="<?php echo $dados->sobrantes ?>">
+                    <label class="btn pull-right" style="border: 0; background-color: #1f497d; color: white"><strong> Costo Total S/. <?php echo $dados->total ?> </strong></label>
 
                     <!--                    <div class="jcarousellite">-->
 <!--                        <div class="carousel">-->
 
-                            <div class="container">
+                            <div class="container col-lg-12">
                                 <div class="outer_div">
                                     <div class="row">
                                 <?php
@@ -133,7 +143,10 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
 
     }
 ?>
-
+</li>
+        </ul>
+        </div>
+        </div>
 
 <!--modallllll-->
 <div class="container">
@@ -147,7 +160,10 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title"><strong>Reservas</strong></h4>
                         <input type = "hidden" style="border: 0px" class="btn-default reservas" id="res">
+<!--                        <input type = "hidden" class="btn-default sobra" id="sobra">-->
                         <label class="reservas btn btn-default" style="float: right; font-family: 'Cooper Black'; color: red"></label>
+<!--                        <label class="sobra btn btn-default" style="font-family: 'sans-serif'; color: red"></label>-->
+
 
                     </div>
                 <div class="modal-body">
@@ -223,6 +239,8 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
                                 <label for="consulta" class="text-right">Consulta Extra</label>
                                 <textarea name="consulta" id="consulta" cols="30" rows="10"></textarea>
 
+                                <div id="mensaje"></div>
+
                             </div>
                         </div>
 
@@ -233,12 +251,11 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
                     <div class="modal-footer">
                         <input type="button" id="btnProcesar" name="btnProcesar" class="btn btn-primary" value="Reservar">
 
-    <!--                        <button class="btn btn-danger" onclick="return false;">Borrar</button>-->
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                 </form>
-            <div id="mensaje"></div>
+
 
         </div>
     </div>
@@ -261,9 +278,12 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
                 <div class="modal-body">
                     <form action="" method="post" id="formulario">
                     <input type="hidden" class="id_lugar_turistico2" id="id_lugar_turistico2" name="id_lugar">
+
                     </form>
 
+
                     <div id="respuesta">
+
                     </div>
 
                 </div>
@@ -276,5 +296,9 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
 
 </div>
 </body>
+
+<link href="css/toastr.min.css" rel="stylesheet" />
+<script src="js/toastr.min.js"></script>
+
 </html>
 

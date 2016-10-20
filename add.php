@@ -23,7 +23,7 @@ $consulta2 = "select * from ps_reservas_circuito WHERE id_circuito=" . $id_circu
 $query2 = $mysqli->query( $consulta2 )or die( $mysqli->error );
 
 $row2 =$query2->num_rows;
-//echo $row2;
+
 
 
 if( $row2 > 0 ){
@@ -72,7 +72,6 @@ if( $row2 > 0 ){
 
 }
 
-if(!isset($sobrantes)) {
 
     $sql = "insert into ps_reservas (id_circuito,nombre,correo,celular,fecha_salida,adultos,ninios,infantes,total_personas,consulta_adicional,estado_reserva) VALUES ('" . $id_circuito . "','" . $nombre . "','" . $correo . "','" . $celular . "','" . $salida . "','" . $adultos . "','" . $ninios . "','" . $infantes . "','" . $total . "','" . $adicional . "','1')";
 
@@ -86,27 +85,5 @@ if(!isset($sobrantes)) {
     {
         echo "La reserva se registro ";
     }
-
-}
-elseif (isset($sobrantes) > 0){
-
-    $sql = "insert into ps_reservas (id_circuito,nombre,correo,celular,fecha_salida,adultos,ninios,infantes,total_personas,consulta_adicional,estado_reserva) VALUES ('" . $id_circuito . "','" . $nombre . "','" . $correo . "','" . $celular . "','" . $salida . "','" . $adultos . "','" . $ninios . "','" . $infantes . "','" . $total . "','" . $adicional . "','1')";
-
-    $query = $mysqli->query($sql) or die($mysqli->error);
-
-    if(!$query)
-    {
-        echo "Ha ocurrido un error";
-    }
-    else
-    {
-        echo "La reserva se registro ";
-    }
-
-
-}else if(isset($sobrantes) == 0){
-
-    echo "Reservas Agotadas";
-}
 
 
