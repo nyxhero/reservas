@@ -1,0 +1,5 @@
+
+
+body.modal-open .ui-datepicker {
+    z-index: 1200 !important;
+}
