@@ -32,7 +32,7 @@
 
 <?php
 
-$mysqli = new mysqli('localhost','root','', 'prestashop');
+$mysqli = new mysqli('localhost','root','', 'yamcajamarcadb');
 
 
 $sql = "SELECT DISTINCT tcl.id_cir as id_circuito,
@@ -46,12 +46,12 @@ $sql = "SELECT DISTINCT tcl.id_cir as id_circuito,
                 lt.nombre as nombre,
                 ilt.id_imagen_lugares_turisticos as id_imagen_lugares_turisticos,
                 ilt.imagen_principal as imagen_principal
-FROM ps_tmp_circuito_lugar tcl
-  INNER JOIN ps_imagen_lugares_turisticos ilt
+FROM tr_tmp_circuito_lugar tcl
+  INNER JOIN tr_imagen_lugares_turisticos ilt
     ON ilt.id_lugar_turistico = tcl.id_lug
-  inner join ps_lugar_turistico lt
+  inner join tr_lugar_turistico lt
     on ilt.id_lugar_turistico = lt.id_lugar_turistico
-  inner join ps_circuito c
+  inner join tr_circuito c
     on c.id_circuito = tcl.id_cir
 ORDER BY c.id_circuito ASC";
 

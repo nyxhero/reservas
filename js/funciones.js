@@ -1,4 +1,4 @@
-$(function() {
+﻿$(function() {
 
     // $("#lista").removeAttribute("height");
 
@@ -23,7 +23,7 @@ $(function() {
     $(".jcarousellite .carousel").jCarouselLite({
         auto: 800,
         speed: 3000,
-        // visible: 3,
+        visible: 5,
         vertical: true,
         // This is the configuration parameter
         circular: true,
