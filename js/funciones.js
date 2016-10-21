@@ -1,5 +1,7 @@
 $(function() {
 
+    // $("#lista").removeAttribute("height");
+
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -20,21 +22,27 @@ $(function() {
 
     $(".jcarousellite .carousel").jCarouselLite({
         auto: 800,
-        speed: 30000,
-        // visible: 2,
-        hoverPause: true,
+        speed: 3000,
+        // visible: 3,
         vertical: true,
-         // This is the configuration parameter
+        // This is the configuration parameter
         circular: true,
-        create: $('.robtherslider').hover(function() 
-            {
-                $('.robtherslider').mouseenter(function(){
-                    console.log('hola');
-                    //$(".jcarousellite").stop().animate(); 
-                    $(".jcarousellite").trigger('pauseOnMouseOver');
-                    //$(".jcarousellite").hoverPause();
-                });
-            })
+        create: $('.robtherslider').hover(function()
+        {
+            $('.robtherslider').mouseenter(function(){
+
+                //$(".jcarousellite").stop().animate();
+                // $(".li").mouseover(function () {
+                //     $(this).parent().stop();
+                // });
+                // $(".li").onmouseout(function () {
+                //
+                // });
+                //$(".jcarousellite").hoverPause();
+            });
+            // $('.robtherslider').mouseenter().find(".li").trigger('pauseOnMouseOver');
+        })
+
     });
     // $(".jcarousellite .carousel").jCarouselLite({
     //     auto: 800,
@@ -45,7 +53,7 @@ $(function() {
     // });
 
 
-    $(".imagenes").attr("data-toggle", "modal").attr( "data-target", "#paramostrar").attr("style", "cursor:pointer;height: 220px");
+    $(".imagenes").attr("data-toggle", "modal").attr( "data-target", "#paramostrar").attr("style", "cursor:pointer; height: 220px");
 
 
 

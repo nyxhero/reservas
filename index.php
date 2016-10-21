@@ -62,7 +62,7 @@ $prev_cat = '';
 <div class="jcarousellite">
     <div class="carousel">
         <ul>
-            <li>
+
 <?php
 
 while( $dados = $query->fetch_object() ){
@@ -72,8 +72,9 @@ while( $dados = $query->fetch_object() ){
 
         if( $prev_cat!='' ) {
             ?>
+            <li class="li" id="lista">
 
-            <div class="padre col-lg-9 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
+            <div class="padre col-lg-10 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
                 <fieldset class="robtherslider col-lg-11 col-xs-11" style="border:3px solid #1f497d">
                     <legend><?php echo $dados->nombrecir ?></legend>
                     <a class="btn idcircuitoclick" style="background-color: #e26b0a; color: white" data-toggle="modal" data-target="#myModal" >Reservar</a>
@@ -135,6 +136,7 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
 
                 </fieldset>
             </div>
+            </li>
 
             <?php
             }
@@ -143,7 +145,7 @@ from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
 
     }
 ?>
-</li>
+
         </ul>
         </div>
         </div>
