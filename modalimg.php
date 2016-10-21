@@ -25,6 +25,7 @@ while($ver2=$query->fetch_array()){
                 visible: 3,
                 wrap: 'circular',
 
+
             }).jcarouselAutoscroll({
                 interval: 1000,
                 target: '+=1',
@@ -61,6 +62,7 @@ while($ver2=$query->fetch_array()){
         .jcarousel li {
             /* Required only for block elements like <li>'s */
             float: left;
+
         }
     </style>
 
@@ -73,7 +75,7 @@ while($ver2=$query->fetch_array()){
         $img =$array[($index)];
         ?>
 <li>
-           <img width='250px' height='180px' src='/prestashop123/admin39639dcpu/imagenes_secundarias/<?php echo utf8_encode($img)?>'>
+           <img width='250px' height='180px' style="margin: 3px" src='/prestashop123/admin39639dcpu/imagenes_secundarias/<?php echo utf8_encode($img)?>'>
 
 </li>
 
