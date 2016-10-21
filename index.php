@@ -74,7 +74,7 @@ while( $dados = $query->fetch_object() ){
             ?>
 
             <div class="padre col-lg-9 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
-                <fieldset class="col-lg-11 col-xs-11" style="border:3px solid #1f497d">
+                <fieldset class="robtherslider col-lg-11 col-xs-11" style="border:3px solid #1f497d">
                     <legend><?php echo $dados->nombrecir ?></legend>
                     <a class="btn idcircuitoclick" style="background-color: #e26b0a; color: white" data-toggle="modal" data-target="#myModal" >Reservar</a>
                     <input type="hidden" class="idcircuito" value="<?php echo $dados->id_circuito ?>">

@@ -15,22 +15,27 @@ $(function() {
         "showEasing": "swing",
         "hideEasing": "linear",
         "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
+        "hideMethod": "fadeOut",
     };
 
     $(".jcarousellite .carousel").jCarouselLite({
-
-
-
         auto: 800,
         speed: 30000,
         // visible: 2,
+        hoverPause: true,
         vertical: true,
-        // pauseOnMouseOver: true, // This is the configuration parameter
-        circular: true
-
+         // This is the configuration parameter
+        circular: true,
+        create: $('.robtherslider').hover(function() 
+            {
+                $('.robtherslider').mouseenter(function(){
+                    console.log('hola');
+                    //$(".jcarousellite").stop().animate(); 
+                    $(".jcarousellite").trigger('pauseOnMouseOver');
+                    //$(".jcarousellite").hoverPause();
+                });
+            })
     });
-
     // $(".jcarousellite .carousel").jCarouselLite({
     //     auto: 800,
     //     speed: 1000,
