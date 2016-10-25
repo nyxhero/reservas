@@ -13,12 +13,12 @@ $total = $_POST['personas'];
 $adicional = $_POST['consulta'];
 
 
-$consulta = "select * from ps_circuito WHERE id_circuito = " . $id_circuito;
+$consulta = "select * from tr_circuito WHERE id_circuito = " . $id_circuito;
 
 $query1 = $mysqli->query( $consulta )or die( $mysqli->error );
 
 
-$consulta2 = "select * from ps_reservas_circuito WHERE id_circuito=" . $id_circuito ." AND  fecha = '" . $salida . "'";
+$consulta2 = "select * from tr_reservas_circuito WHERE id_circuito=" . $id_circuito ." AND  fecha = '" . $salida . "'";
 //echo $consulta2;
 $query2 = $mysqli->query( $consulta2 )or die( $mysqli->error );
 
@@ -28,7 +28,7 @@ $row2 =$query2->num_rows;
 
 if( $row2 > 0 ){
 
-    $consulta3 = "select sobrantes from ps_reservas_circuito WHERE id_circuito=" . $id_circuito ." AND  fecha = '" . $salida . "'";
+    $consulta3 = "select sobrantes from tr_reservas_circuito WHERE id_circuito=" . $id_circuito ." AND  fecha = '" . $salida . "'";
 
 
     $query3 = $mysqli->query( $consulta3 )or die( $mysqli->error );
@@ -41,7 +41,7 @@ if( $row2 > 0 ){
         $restantes = $sobrantes - $total;
 //    echo $restantes;
         if($restantes >= 0) {
-            $sqlupd = "UPDATE ps_reservas_circuito SET sobrantes = '" . $restantes . "' where id_circuito = $id_circuito AND fecha = '" . $salida . "'";
+            $sqlupd = "UPDATE tr_reservas_circuito SET sobrantes = '" . $restantes . "' where id_circuito = $id_circuito AND fecha = '" . $salida . "'";
 
             $query5 = $mysqli->query($sqlupd) or die($mysqli->error);
         }else{
@@ -55,7 +55,7 @@ if( $row2 > 0 ){
 
 }else{
 
-    $consulta4 = "select capacidad from ps_circuito WHERE id_circuito = " . $id_circuito;
+    $consulta4 = "select capacidad from tr_circuito WHERE id_circuito = " . $id_circuito;
 
     $query4 = $mysqli->query( $consulta4 )or die( $mysqli->error );
 
@@ -66,14 +66,14 @@ if( $row2 > 0 ){
     $restantes = $capacidad - $total;
 
 
-    $sqladd = "insert into ps_reservas_circuito (id_circuito,fecha,capacidad,sobrantes) VALUES ('" .$id_circuito. "','". $salida ."','". $capacidad ."','". $restantes ."')";
+    $sqladd = "insert into tr_reservas_circuito (id_circuito,fecha,capacidad,sobrantes) VALUES ('" .$id_circuito. "','". $salida ."','". $capacidad ."','". $restantes ."')";
 
     $queryadd = $mysqli->query( $sqladd )or die( $mysqli->error );
 
 }
 
 
-    $sql = "insert into ps_reservas (id_circuito,nombre,correo,celular,fecha_salida,adultos,ninios,infantes,total_personas,consulta_adicional,estado_reserva) VALUES ('" . $id_circuito . "','" . $nombre . "','" . $correo . "','" . $celular . "','" . $salida . "','" . $adultos . "','" . $ninios . "','" . $infantes . "','" . $total . "','" . $adicional . "','1')";
+    $sql = "insert into tr_reservas (id_circuito,nombre,correo,celular,fecha_salida,adultos,ninios,infantes,total_personas,consulta_adicional,estado_reserva) VALUES ('" . $id_circuito . "','" . $nombre . "','" . $correo . "','" . $celular . "','" . $salida . "','" . $adultos . "','" . $ninios . "','" . $infantes . "','" . $total . "','" . $adicional . "','1')";
 
     $query = $mysqli->query($sql) or die($mysqli->error);
 

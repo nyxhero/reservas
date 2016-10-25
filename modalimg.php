@@ -6,14 +6,13 @@ $resultado = "";
 $nombre = $_POST["id_lugar"];
 
 /* Crear un Array. Simulando una consulta a una base de datos */
-$array = 'SELECT * FROM ps_imagen_lugares_turisticos  ilt inner join ps_lugar_turistico lt on lt.id_lugar_turistico = ilt.id_lugar_turistico WHERE ilt.id_lugar_turistico = ' . $nombre;
+$array = 'SELECT * FROM tr_imagen_lugares_turisticos  ilt inner join tr_lugar_turistico lt on lt.id_lugar_turistico = ilt.id_lugar_turistico WHERE ilt.id_lugar_turistico = ' . $nombre;
 $query = $mysqli->query( $array )or die( $mysqli->error );
 
 while($ver2=$query->fetch_array()){
     ?>
-
-    <h3><?php echo $ver2['nombre']?></h3>
-
+    <div class="col-lg-6 col-xs-6 col-sm-4"><h3><strong><?php echo $ver2['nombre']?></strong></h3></div><br>
+    <div class="col-lg-6 col-xs-6 col-sm-4 text-justify"><strong><?php  echo utf8_encode($ver2['ubicacion_exacta']). "<br>" ?></strong></div>
     <?php
     $array = explode(';',$ver2['imagenes_secundarias']);
     $array2 = array_pop($array); //eliminar
@@ -25,9 +24,8 @@ while($ver2=$query->fetch_array()){
                 visible: 3,
                 wrap: 'circular',
 
-
             }).jcarouselAutoscroll({
-                interval: 1000,
+                interval: 2000,
                 target: '+=1',
                 autostart: true
             });
@@ -37,7 +35,11 @@ while($ver2=$query->fetch_array()){
         .jcarousel {
             position: relative;
             overflow: hidden;
-            width: 750px;
+            width: 790px;
+            border: 10px solid #1f497d;
+            box-shadow: 0 0 2px #999;
+            border-radius: 5px;
+            margin: 5px auto;
         }
 
         /*
@@ -63,6 +65,7 @@ while($ver2=$query->fetch_array()){
             /* Required only for block elements like <li>'s */
             float: left;
 
+
         }
     </style>
 
@@ -85,10 +88,27 @@ while($ver2=$query->fetch_array()){
                     </ul>
                 </div>
 
-<?php
-         echo $ver2['descripcion_corta']. "<br>";
-         echo $ver2['ubicacion_exacta']. "<br>";
-         echo $ver2['leyenda_detallada']. "<br>";
+    <div class="row ">
+
+        <marquee><strong> <?php  echo utf8_encode($ver2['descripcion_corta']). "<br>" ?></strong></marquee>
+
+    </div>
+    <div class="row ">
+
+        <div class="col-lg-6 text-justify">
+            <label for="" class="h3">Descripcion</label><br>
+            <p class="h4"><?php  echo utf8_encode($ver2['descripcion_detallada']). "<br>" ?></p>
+        </div>
+        <div class="col-lg-6 text-justify">
+            <label for="" class="h3">Leyenda</label><br>
+            <p class="h4"><?php  echo utf8_encode($ver2['leyenda_detallada']). "<br>" ?></p>
+        </div>
+
+
+    </div>
+
+
+    <?php
 
 }
 ?>

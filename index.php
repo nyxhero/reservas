@@ -46,12 +46,12 @@ $sql = "SELECT DISTINCT tcl.id_cir as id_circuito,
                 lt.nombre as nombre,
                 ilt.id_imagen_lugares_turisticos as id_imagen_lugares_turisticos,
                 ilt.imagen_principal as imagen_principal
-FROM ps_tmp_circuito_lugar tcl
-  INNER JOIN ps_imagen_lugares_turisticos ilt
+FROM tr_tmp_circuito_lugar tcl
+  INNER JOIN tr_imagen_lugares_turisticos ilt
     ON ilt.id_lugar_turistico = tcl.id_lug
-  inner join ps_lugar_turistico lt
+  inner join tr_lugar_turistico lt
     on ilt.id_lugar_turistico = lt.id_lugar_turistico
-  inner join ps_circuito c
+  inner join tr_circuito c
     on c.id_circuito = tcl.id_cir
 ORDER BY c.id_circuito ASC";
 
@@ -102,9 +102,9 @@ while( $dados = $query->fetch_object() ){
        c.max_reservas as max_reservas,
        lt.nombre as nombreturistico,
        ilt.imagen_principal as imagen_principal
-from ps_circuito c INNER JOIN ps_tmp_circuito_lugar tlc
-              ON c.id_circuito = tlc.id_cir INNER JOIN ps_lugar_turistico lt
-              ON tlc.id_lug = lt.id_lugar_turistico INNER JOIN ps_imagen_lugares_turisticos ilt
+from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
+              ON c.id_circuito = tlc.id_cir INNER JOIN tr_lugar_turistico lt
+              ON tlc.id_lug = lt.id_lugar_turistico INNER JOIN tr_imagen_lugares_turisticos ilt
               ON lt.id_lugar_turistico = ilt.id_lugar_turistico WHERE c.id_circuito = ' . $dados->id_circuito .' ORDER BY nombreturistico asc';
 
                                 $query2 = $mysqli->query( $sql2 )or die( $mysqli->error );

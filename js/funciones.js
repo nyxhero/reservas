@@ -30,7 +30,6 @@
         create: $('.robtherslider').hover(function()
         {
             $('.robtherslider').mouseenter(function(){
-
                 //$(".jcarousellite").stop().animate();
                 // $(".li").mouseover(function () {
                 //     $(this).parent().stop();
