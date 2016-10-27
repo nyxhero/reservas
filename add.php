@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli('localhost','root','', 'prestashop');
+$mysqli = new mysqli('localhost','root','', 'yamcajamarcadb');
 
 $id_circuito = $_POST['id_circuito'];
 $nombre = $_POST['nombre'];

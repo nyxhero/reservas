@@ -2,6 +2,8 @@
 
     // $("#lista").removeAttribute("height");
 
+
+
     toastr.options = {
         "closeButton": false,
         "debug": false,
@@ -21,8 +23,8 @@
     };
 
     $(".jcarousellite .carousel").jCarouselLite({
-        auto: 800,
-        speed: 3000,
+        auto: true,
+        speed: 5000,
         visible: 5,
         vertical: true,
         // This is the configuration parameter
@@ -30,15 +32,28 @@
         create: $('.robtherslider').hover(function()
         {
             $('.robtherslider').mouseenter(function(){
-                //$(".jcarousellite").stop().animate();
-                // $(".li").mouseover(function () {
-                //     $(this).parent().stop();
-                // });
-                // $(".li").onmouseout(function () {
-                //
-                // });
-                //$(".jcarousellite").hoverPause();
+
+
+            //     // alert("stop");
+            //     //$(".jcarousellite").stop().animate();
+            //     $(".li").mouseover(function () {
+            //         $(this).parent().stop();
+            //         console.log("ya entre");
+            //     });
+            //     //$(".jcarousellite").hoverPause();
+            // });
+            // $('.robtherslider').mouseleave(function(){
+            //
+            //
+            //     // alert("stop");
+            //     //$(".jcarousellite").stop().animate();
+            //     $(".li").mouseleave(function () {
+            //         $(this).parent().re
+            //         // console.log("ya sali");
+            //     });
+            //     //$(".jcarousellite").hoverPause();
             });
+
             // $('.robtherslider').mouseenter().find(".li").trigger('pauseOnMouseOver');
         })
 
@@ -226,3 +241,54 @@ function restauracampoI(){
     if (document.frm.infantes.value == "")document.frm.infantes.value = "0";
 }
 
+(function($) {
+$(function() {
+    $('.jcarousel')
+        .jcarousel({
+            vertical: true,
+            wrap: 'circular',
+
+
+        }).jcarouselAutoscroll({
+        interval: 2000,
+        target: '+=1',
+        autostart: true
+
+    }).on('mouseover',function(e){
+        $(this).jcarouselAutoscroll('stop');
+    }).on('mouseout',function(e){
+        $(this).jcarouselAutoscroll('start');
+    });;
+
+//                $('.jcarousel-control-prev')
+//                    .on('jcarouselcontrol:active', function() {
+//                        $(this).removeClass('inactive');
+//                    })
+//                    .on('jcarouselcontrol:inactive', function() {
+//                        $(this).addClass('inactive');
+//                    })
+//                    .jcarouselControl({
+//                        target: '-=1'
+//                    });
+//
+//                $('.jcarousel-control-next')
+//                    .on('jcarouselcontrol:active', function() {
+//                        $(this).removeClass('inactive');
+//                    })
+//                    .on('jcarouselcontrol:inactive', function() {
+//                        $(this).addClass('inactive');
+//                    })
+//                    .jcarouselControl({
+//                        target: '+=1'
+//                    });
+//
+//                $('.jcarousel-pagination')
+//                    .on('jcarouselpagination:active', 'a', function() {
+//                        $(this).addClass('active');
+//                    })
+//                    .on('jcarouselpagination:inactive', 'a', function() {
+//                        $(this).removeClass('active');
+//                    })
+//                    .jcarouselPagination();
+});
+})(jQuery);

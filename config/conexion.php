@@ -4,7 +4,7 @@ function conectarse(){
     $servidor = "localhost";
     $usuario = "root";
     $password = "";
-    $bd = "prestashop";
+    $bd = "yamcajamarcadb";
 
     $conectar = new mysqli($servidor,$usuario,$password,$bd);
 

@@ -136,10 +136,10 @@
                 // But in the case of img (with width and height attr), we can derive LI's dimensions and set here
                 // May be applicable for other types of LI children if their dimensions are explicitly specified
                 // Individual LI dimensions
-                // li.css({
-                //     width: li.width(),
-                //     height: li.height()
-                // });
+                li.css({
+                    width: li.width(),
+                    height: li.height()
+                });
 
                 // Size of the entire UL. Including hidden and visible elements
                 // Will include LI's (width + padding + border + margin) * itemLength - Using outerwidth(true)
