@@ -38,6 +38,7 @@ $mysqli = new mysqli('localhost','root','', 'yamcajamarcadb');
 $sql = "SELECT DISTINCT tcl.id_cir as id_circuito,
                 c.nombre as nombrecir,
                 c.total as total,
+                c.capacidad as capacidad,
                 c.max_reservas as max_reservas,
                 c.costo_adulto as adulto,
                 c.costo_ninio as ninio,
@@ -82,9 +83,11 @@ while( $dados = $query->fetch_object() ){
                     <input type="hidden" class="maxres" value="<?php echo $dados->max_reservas ?>">
                     <input type="hidden" class="sobrantes" value="<?php echo $dados->sobrantes ?>">
                     <label class="btn pull-right" style="border: 0; background-color: #1f497d; color: white"><strong> Costo Total S/. <?php echo $dados->total ?> </strong></label>
+                    <input type="hidden" class="capacidad" value="<?php echo $dados->capacidad ?>">
 
 
-                            <div class="container col-lg-12">
+
+                    <div class="container col-lg-12">
                                 <div class="outer_div">
                                     <div class="row">
                                 <?php
@@ -107,10 +110,11 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
 
                                 $query2 = $mysqli->query( $sql2 )or die( $mysqli->error );
 
+
                                 while ($dados2 = $query2->fetch_object()) {
                                     ?>
 
-                                <div class="col-lg-4 col-md-6 col-xs-12" style="margin-top: 20px; height: 300px;width: 300px">
+                                    <div class="col-lg-4 col-md-6 col-xs-12" style="margin-top: 20px; height: 300px;width: 300px">
                                     <div class="d thumbnail col-xs-12">
 
                                         <img alt="" class="imagenes" src="/YamCajamarca/admin5755/<?php echo utf8_encode($dados2->imagen_principal) ?>">
@@ -159,7 +163,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title"><strong>Reservas</strong></h4>
                         <input type = "hidden" style="border: 0px" class="btn-default reservas" id="res">
-<!--                        <input type = "hidden" class="btn-default sobra" id="sobra">-->
+                        <input type = "hidden" class="capacidad2" id="capacidad2">
                         <label class="reservas btn btn-default" style="float: right; font-family: 'Cooper Black'; color: red"></label>
 <!--                        <label class="sobra btn btn-default" style="font-family: 'sans-serif'; color: red"></label>-->
 

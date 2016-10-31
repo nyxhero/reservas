@@ -113,6 +113,9 @@
         $("#myModal").find(".reservas").html('Maximo # reservas '+
             $(this).parent().find(".maxres").val()
         );
+        $("#myModal").find(".capacidad2").val(
+            $(this).parent().find(".capacidad").val()
+        );
 
         // $("#myModal").find(".sobra").val($(this).parent().find(".sobrantes").val());
         //
