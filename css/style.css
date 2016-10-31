@@ -118,3 +118,41 @@ body.modal-open .ui-datepicker {
     opacity: 1;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.75);
 }
+
+.sombras{
+    border: 0;
+    box-shadow: -7px 7px 30px #1f497d;
+    border-radius: 12px;
+}
+
+.fondito{
+    color: #fff;
+    background: #e26b0a;
+    font-size: 20px;
+    padding: 5px;
+    margin-bottom: 20px;
+    border-bottom: 4px solid #1f497d;
+    border-left: 4px solid #1f497d;
+
+    border-radius: 8px;
+    text-align: center;
+}
+
+.d{
+    box-shadow: 0 0 20px #1f497d;
+}
+
+.idcircuitoclick{
+    background-color: #e26b0a;
+    color: white;
+    border-bottom: 4px solid #1f497d;
+    border-left: 4px solid #1f497d;
+}
+
+.idcircuitoclick:hover{
+    background-color: #a3520a !important;
+    color: white !important;
+    border-bottom: 0;
+    border-left: 0;
+
+}

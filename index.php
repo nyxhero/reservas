@@ -75,16 +75,14 @@ while( $dados = $query->fetch_object() ){
             <li class="li" id="lista">
 
             <div class="padre col-lg-10 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
-                <fieldset class="robtherslider col-lg-11 col-xs-11" style="border:3px solid #1f497d">
-                    <legend><?php echo utf8_encode($dados->nombrecir) ?></legend>
-                    <a class="btn idcircuitoclick" style="background-color: #e26b0a; color: white" data-toggle="modal" data-target="#myModal" >Reservar</a>
+                <fieldset class="sombras col-lg-11 col-xs-11" style="">
+                    <legend class="fondito"><?php echo utf8_encode($dados->nombrecir) ?></legend>
+                    <a class="btn idcircuitoclick" data-toggle="modal" data-target="#myModal" ><strong>Reservar</strong></a>
                     <input type="hidden" class="idcircuito" value="<?php echo $dados->id_circuito ?>">
                     <input type="hidden" class="maxres" value="<?php echo $dados->max_reservas ?>">
                     <input type="hidden" class="sobrantes" value="<?php echo $dados->sobrantes ?>">
                     <label class="btn pull-right" style="border: 0; background-color: #1f497d; color: white"><strong> Costo Total S/. <?php echo $dados->total ?> </strong></label>
 
-                    <!--                    <div class="jcarousellite">-->
-<!--                        <div class="carousel">-->
 
                             <div class="container col-lg-12">
                                 <div class="outer_div">
@@ -113,7 +111,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                                     ?>
 
                                 <div class="col-lg-4 col-md-6 col-xs-12" style="margin-top: 20px; height: 300px;width: 300px">
-                                    <div class="thumbnail col-xs-12">
+                                    <div class="d thumbnail col-xs-12">
 
                                         <img alt="" class="imagenes" src="/YamCajamarca/admin5755/<?php echo utf8_encode($dados2->imagen_principal) ?>">
                                             <div class="caption col-xs-12">
@@ -128,8 +126,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                                     </div>
                                 </div>
                             </div>
-<!--                        </div>-->
-<!--                    </div>-->
+
                     <div class="col-xs-12">
                     <h4 class="text-right"><strong >Precio Adulto S/. <?php echo $dados->adulto?><span>&nbsp;&nbsp;--&nbsp;&nbsp;</span>Precio Niño S/. <?php echo $dados->ninio ."\t" ?><span>&nbsp;&nbsp;--&nbsp;&nbsp;</span> Precio Infante S/. <?php echo $dados->infante ."\t" ?></strong></h4>
                     </div>
@@ -147,8 +144,8 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
 ?>
 
         </ul>
-        </div>
-        </div>
+    </div>
+</div>
 
 <!--modallllll-->
 <div class="container">
@@ -165,7 +162,6 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
 <!--                        <input type = "hidden" class="btn-default sobra" id="sobra">-->
                         <label class="reservas btn btn-default" style="float: right; font-family: 'Cooper Black'; color: red"></label>
 <!--                        <label class="sobra btn btn-default" style="font-family: 'sans-serif'; color: red"></label>-->
-
 
                     </div>
                 <div class="modal-body">
