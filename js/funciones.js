@@ -71,9 +71,12 @@
 
 
 
+
     $(".imagenes").click(function () {
 
         $('#paramostrar').modal("show");
+
+
 
         $("#paramostrar").find(".id_lugar_turistico2").val(
             $(this).parent().find(".id_lugar_turistico").val()
@@ -126,7 +129,7 @@
     });
 
     $("#salida").datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd/mm/yy',
         minDate: '+0d'
     });
 
@@ -197,7 +200,7 @@
 
 function validar() {
     if ($("#personas").val() > $("#res").val()) {
-        alert("No debe exeder el numero de reservas")
+        alert("No debe exceder el numero de reservas");
         $("#adultos, #ninios, #infantes,#personas").val("0");
     }
 }
@@ -261,7 +264,17 @@ $(function() {
         $(this).jcarouselAutoscroll('stop');
     }).on('mouseout',function(e){
         $(this).jcarouselAutoscroll('start');
-    });;
+    });
+    // $(".modal").on('show.bs.modal', function () {
+    // });
+    $("#img").click(function() {
+       alert("dsfdsf");
+    });
+    // $(".modal").on('hide.bs.modal', function () {
+    //
+    // });
+
+
 
 //                $('.jcarousel-control-prev')
 //                    .on('jcarouselcontrol:active', function() {

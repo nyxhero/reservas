@@ -23,8 +23,9 @@ body.modal-open .ui-datepicker {
 .jcarousel {
     position: relative;
     overflow: hidden;
-    width: auto;
+    width: 1500px;
     height: 1000px;
+    margin-left: 170px;
 }
 
 .jcarousel img {
@@ -127,15 +128,16 @@ body.modal-open .ui-datepicker {
 
 .fondito{
     color: #fff;
-    background: #e26b0a;
+    background: #1f497d;
     font-size: 20px;
     padding: 5px;
     margin-bottom: 20px;
-    border-bottom: 4px solid #1f497d;
-    border-left: 4px solid #1f497d;
+    border-bottom: 5px solid   #e26b0a;
+    border-left: 5px solid #e26b0a;
 
-    border-radius: 8px;
+    border-radius: 3px;
     text-align: center;
+
 }
 
 .d{
@@ -145,8 +147,7 @@ body.modal-open .ui-datepicker {
 .idcircuitoclick{
     background-color: #e26b0a;
     color: white;
-    border-bottom: 4px solid #1f497d;
-    border-left: 4px solid #1f497d;
+
 }
 
 .idcircuitoclick:hover{
@@ -154,5 +155,6 @@ body.modal-open .ui-datepicker {
     color: white !important;
     border-bottom: 0;
     border-left: 0;
+
 
 }

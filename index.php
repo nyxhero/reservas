@@ -76,13 +76,18 @@ while( $dados = $query->fetch_object() ){
             <li class="li" id="lista">
 
             <div class="padre col-lg-10 col-lg-offset-1 col-xs-12"  style="padding: 20px;">
-                <fieldset class="sombras col-lg-11 col-xs-11" style="">
+                <fieldset class="sombras col-lg-11 col-xs-11" style="width: 1300px;">
                     <legend class="fondito"><?php echo utf8_encode($dados->nombrecir) ?></legend>
                     <a class="btn idcircuitoclick" data-toggle="modal" data-target="#myModal" ><strong>Reservar</strong></a>
                     <input type="hidden" class="idcircuito" value="<?php echo $dados->id_circuito ?>">
                     <input type="hidden" class="maxres" value="<?php echo $dados->max_reservas ?>">
                     <input type="hidden" class="sobrantes" value="<?php echo $dados->sobrantes ?>">
-                    <label class="btn pull-right" style="border: 0; background-color: #1f497d; color: white"><strong> Costo Total S/. <?php echo $dados->total ?> </strong></label>
+                    <label class="btn pull-right" style="border: 0; background-color: #1f497d; color: white">
+<!--                        <strong> Costo Total S/. --><?php //echo $dados->total ?><!-- </strong>-->
+                        <strong >Precio Adulto S/. <?php echo $dados->adulto?>
+                            <span>&nbsp;&nbsp;--&nbsp;&nbsp;</span>Precio Niño S/. <?php echo $dados->ninio ."\t" ?><span>&nbsp;&nbsp;--&nbsp;&nbsp;</span> Precio Infante S/. <?php echo $dados->infante ."\t" ?>
+                        </strong>
+                    </label>
                     <input type="hidden" class="capacidad" value="<?php echo $dados->capacidad ?>">
 
 
@@ -117,7 +122,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                                     <div class="col-lg-4 col-md-6 col-xs-12" style="margin-top: 20px; height: 300px;width: 300px">
                                     <div class="d thumbnail col-xs-12">
 
-                                        <img alt="" class="imagenes" src="/YamCajamarca/admin5755/<?php echo utf8_encode($dados2->imagen_principal) ?>">
+                                        <img alt="" id="img" class="imagenes" src="/YamCajamarca/admin5755/<?php echo utf8_encode($dados2->imagen_principal) ?>">
                                             <div class="caption col-xs-12">
                                                 <input type="hidden" id="id_lugar_turistico" class="id_lugar_turistico" name="id_lugar_turistico" value="<?php echo $dados2->id_lugar_turistico ?>">
                                                 <h4 style="text-align: center"><?php echo utf8_encode($dados2->nombreturistico) ?></h4>
@@ -131,9 +136,9 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                                 </div>
                             </div>
 
-                    <div class="col-xs-12">
-                    <h4 class="text-right"><strong >Precio Adulto S/. <?php echo $dados->adulto?><span>&nbsp;&nbsp;--&nbsp;&nbsp;</span>Precio Niño S/. <?php echo $dados->ninio ."\t" ?><span>&nbsp;&nbsp;--&nbsp;&nbsp;</span> Precio Infante S/. <?php echo $dados->infante ."\t" ?></strong></h4>
-                    </div>
+<!--                    <div class="col-xs-12">-->
+<!--                    <h4 class="text-right"><strong >Precio Adulto S/. --><?php //echo $dados->adulto?><!--<span>&nbsp;&nbsp;--&nbsp;&nbsp;</span>Precio Niño S/. --><?php //echo $dados->ninio ."\t" ?><!--<span>&nbsp;&nbsp;--&nbsp;&nbsp;</span> Precio Infante S/. --><?php //echo $dados->infante ."\t" ?><!--</strong></h4>-->
+<!--                    </div>-->
 
                 </fieldset>
             </div>
@@ -206,7 +211,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
                             <div class="col-xs-4">
                                 <div class="form-group">
                                     <label for="textinput">Nro. Adultos</label>
-                                    <input id="adultos" name="adultos" type="number" placeholder="# Adultos" class="form-control input-md" min="1" max="100" onChange="sumar(); borracampoA(); validar();" onClick="borracampoA(); validar();" onBlur="restauracampoA()" value="0">
+                                    <input id="adultos" name="adultos" type="number" placeholder="12 años a más" class="form-control input-md" min="1" max="100" onChange="sumar(); borracampoA(); validar();" onClick="borracampoA(); validar();" onBlur="restauracampoA()" value="0">
 
                                 </div>
                             </div>
@@ -215,7 +220,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
 
                                 <div class="form-group">
                                     <label for="textinput">Nro. Niños</label>
-                                    <input id="ninios" name="ninios" type="number" placeholder="# Niños" class="form-control input-md" min="0" max="100" onChange="sumar();borracampoN() ; validar();" onClick="borracampoN(); validar();" onBlur="restauracampoN()" value="0">
+                                    <input id="ninios" name="ninios" type="number" placeholder="2 a 11 años" class="form-control input-md" min="0" max="100" onChange="sumar();borracampoN() ; validar();" onClick="borracampoN(); validar();" onBlur="restauracampoN()" value="0">
 
                                 </div>
 
@@ -224,7 +229,7 @@ from tr_circuito c INNER JOIN tr_tmp_circuito_lugar tlc
 
                                 <div class="form-group">
                                     <label for="textinput">Nro. Infantes</label>
-                                    <input id="infantes" name="infantes" type="number" placeholder="# Infantes" class="form-control input-md" min="0" max="100" onChange="sumar();borracampoI() ; validar();" onClick="borracampoI(); validar();" onBlur="restauracampoI()" value="0">
+                                    <input id="infantes" name="infantes" type="number" placeholder="0 a 2 años" class="form-control input-md" min="0" max="100" onChange="sumar();borracampoI() ; validar();" onClick="borracampoI(); validar();" onBlur="restauracampoI()" value="0">
 
                                 </div>
                             </div>
